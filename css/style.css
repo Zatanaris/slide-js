@@ -12,6 +12,7 @@ img {
 
 .slide {
     display: flex;
+    margin-top: 2rem;
 }
 
 .slide:hover {
@@ -38,4 +39,27 @@ img {
 .slide li.active {
     opacity: 1;
     transform: scale(1);
+}
+
+.arrow-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.arrow-nav button {
+    width: 50px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    opacity: 1;
+    transition: 0.3s;
+}
+
+.arrow-nav button:hover {
+    opacity: 0.7;
 }
