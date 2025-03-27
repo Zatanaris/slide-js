@@ -9,6 +9,7 @@ export class Slide {
             movement: 0,
         };
         this.activeClass = "active";
+        this.changEvent = new Event("changeEvent");
     }
 
     transition(active) {
@@ -104,6 +105,7 @@ export class Slide {
         this.slidesIndexNav(index);
         this.dist.finalPosition = activeSlide.position;
         this.changeActiveClass();
+        this.wrapper.dispatchEvent(this.changEvent);
     }
 
     changeActiveClass() {
@@ -192,18 +194,27 @@ export class SlideNav extends Slide {
             event.preventDefault();
             this.changeSlide(index);
         });
+        this.wrapper.addEventListener("changeEvent", this.activeControlItem);
+    }
+
+    activeControlItem() {
+        this.controlArray.forEach((item) =>
+            item.classList.remove(this.activeClass)
+        );
+        this.controlArray[this.index.active].classList.add(this.activeClass);
     }
 
     addControl(custonControl) {
         this.control =
             document.querySelector(custonControl) || this.createControl();
         this.controlArray = [...this.control.children];
-        console.log(this.control);
-        console.log(this.controlArray);
+
+        this.activeControlItem();
         this.controlArray.forEach(this.eventControl);
     }
 
     bindControlEvents() {
         this.eventControl = this.eventControl.bind(this);
+        this.activeControlItem = this.activeControlItem.bind(this);
     }
 }
