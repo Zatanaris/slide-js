@@ -44,7 +44,7 @@ img {
 .arrow-nav {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 1rem;
 }
 
@@ -53,11 +53,15 @@ img {
     aspect-ratio: 1;
     border-radius: 50%;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    background-color: #fb5;
+    background: #fb5 url("/img/arrow.svg") center center no-repeat;
     color: black;
     cursor: pointer;
     opacity: 1;
     transition: 0.3s;
+}
+
+.arrow-nav button.prev {
+    transform: rotate(-180deg);
 }
 
 .arrow-nav button:hover {
@@ -83,4 +87,35 @@ img {
 [data-control="slide"] li.active a,
 [data-control="slide"] li a:hover {
     background-color: #e54;
+}
+
+.custom-control {
+    display: flex;
+    justify-content: center;
+    margin-block: 40px 20px;
+    flex-wrap: wrap;
+}
+
+.custom-control li {
+    opacity: 0.8;
+    transform: scale(0.8);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 2px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+    transition: 0.3s;
+}
+
+@media (min-width: 720px) {
+    .custom-control li {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+.custom-control li.active {
+    opacity: 1;
+    transform: scale(1);
 }
